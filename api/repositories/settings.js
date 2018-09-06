@@ -4,7 +4,7 @@ module.exports = (environment) => {
     env = 'prod';
   }
 
-  if (env === 'development' || !env || env == 'undefined') {
+  if (env === 'development' || !env || env === 'undefined') {
     env = 'dev';
   }
 

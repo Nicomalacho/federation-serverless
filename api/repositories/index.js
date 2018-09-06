@@ -1,7 +1,7 @@
 const accountRepo = require('./accountRepo');
 
 const repos = {
-  accountRepo
-}
+  accountRepo,
+};
 
 module.exports = repos;
