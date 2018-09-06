@@ -1,0 +1,53 @@
+{
+  "name": "federation-server",
+  "version": "1.0.0",
+  "description": "Js implementation of Federation protocol server.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "pretest": "npm run lint",
+    "test": "jasmine",
+    "server": "claudia-local-api --api-module api/index.js",
+    "db:setup:workspaces": "cd infrastructure && terraform workspace new dev && terraform workspace new prod",
+    "db:plan": "cd infrastructure && terraform workspace select dev && terraform plan",
+    "db:plan:prod": "cd infrastructure && terraform workspace select prod && terraform plan",
+    "db:apply": "cd infrastructure && terraform workspace select dev && terraform apply",
+    "db:apply:prod": "cd infrastructure && terraform workspace select prod && terraform apply",
+    "db:destroy": "cd infrastructure && terraform workspace select dev && terraform destroy",
+    "db:destroy:prod": "cd infrastructure && terraform workspace select prod && terraform destroy",
+    "api:create": "claudia create --profile space-center --use-s3-bucket platiti-identity-deploy --config api/claudia.json --region us-east-1 --api-module api/index --timeout 120 --policies policies --version development --env dev",
+    "api:deploy": "claudia update --profile space-center --use-s3-bucket platiti-identity-deploy --config api/claudia.json --version development --env dev",
+    "api:deploy:prod": "claudia update --profile space-center --use-s3-bucket platiti-identity-deploy --config api/claudia.json --version production --env prod",
+    "prepush": "npm run lint",
+    "postinstall": "rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/space-center/federation-server.git"
+  },
+  "author": "Nicolas Gaviria Mejia",
+  "license": "",
+  "bugs": {
+    "url": "https://gitlab.com/space-center/federation-server/issues"
+  },
+  "homepage": "https://gitlab.com/space-center/federation-server#README",
+  "devDependencies": {
+    "claudia": "^5.1.1",
+    "claudia-local-api": "^2.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "express": "^4.16.3",
+    "husky": "^0.14.3",
+    "jasmine": "^3.2.0",
+    "lodash": "^4.17.10"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.307.0",
+    "bluebird": "^3.5.2",
+    "claudia-api-builder": "^4.1.1",
+    "moment": "^2.22.2"
+  }
+}
