@@ -16,11 +16,10 @@
     "db:apply:prod": "cd infrastructure && terraform workspace select prod && terraform apply",
     "db:destroy": "cd infrastructure && terraform workspace select dev && terraform destroy",
     "db:destroy:prod": "cd infrastructure && terraform workspace select prod && terraform destroy",
-    "api:create": "claudia create --profile space-center --use-s3-bucket platiti-identity-deploy --config api/claudia.json --region us-east-1 --api-module api/index --timeout 120 --policies policies --version development --env dev",
-    "api:deploy": "claudia update --profile space-center --use-s3-bucket platiti-identity-deploy --config api/claudia.json --version development --env dev",
-    "api:deploy:prod": "claudia update --profile space-center --use-s3-bucket platiti-identity-deploy --config api/claudia.json --version production --env prod",
-    "prepush": "npm run lint",
-    "postinstall": "rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit"
+    "api:create": "claudia create --profile space-center --use-s3-bucket space-center-deploy --config api/claudia.json --region us-east-1 --api-module api/index --timeout 120 --policies policies --version development --env dev",
+    "api:deploy": "claudia update --profile space-center --use-s3-bucket space-center-deploy --config api/claudia.json --version development --env dev",
+    "api:deploy:prod": "claudia update --profile space-center --use-s3-bucket space-center-deploy --config api/claudia.json --version production --env prod",
+    "prepush": "npm run lint"
   },
   "repository": {
     "type": "git",

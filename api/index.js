@@ -14,9 +14,9 @@ api.get('/ping', () => ({
 
 api.get('/federation', (request) => {
   const { environment } = request.env;
-  const { account } = request.queryString;
+  const { q } = request.queryString;
 
-  return accountRepo.find(account, environment)
+  return accountRepo.find(q, environment)
     .then((data) => {
       if (data && data.Item) {
         return { account: data.Item };
@@ -37,9 +37,8 @@ api.post('/accounts', (request) => {
       throw notCreated;
     });
 }, {
-  apiKeyRequired: true,
   success: { contentType: 'application/json' },
-  error: { code: 404, contentType: 'application/json; charset=UTF-8' },
+  error: { code: 400, contentType: 'application/json; charset=UTF-8' },
 });
 
 
