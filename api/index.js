@@ -37,6 +37,7 @@ api.post('/accounts', (request) => {
       throw notCreated;
     });
 }, {
+  apiKeyRequired: true,
   success: { contentType: 'application/json' },
   error: { code: 400, contentType: 'application/json; charset=UTF-8' },
 });

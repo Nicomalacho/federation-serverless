@@ -12,3 +12,7 @@ variable "envs" {
     "prod" = "production"
   }
 }
+
+variable "api" {
+  type = "map"
+}

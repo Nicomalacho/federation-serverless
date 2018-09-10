@@ -32,3 +32,23 @@ resource "aws_dynamodb_table" "federation-server" {
     Environment = "${terraform.env}"
   }
 }
+
+resource "aws_api_gateway_usage_plan" "federation-server-plan" {
+  name         = "federation-server-plan-${terraform.env}"
+  description  = "Federation server usage plan"
+
+  api_stages {
+    api_id = "${lookup(var.api, "id")}"
+    stage  = "${lookup(var.envs, terraform.env)}"
+  }
+
+  quota_settings {
+    limit  = 172800
+    period = "DAY"
+  }
+
+  throttle_settings {
+    burst_limit = 10
+    rate_limit  = 20
+  }
+}

@@ -26,6 +26,10 @@ You will need the following things properly installed on your computer.
 ## Testing
 * `npm test` run tests with jasmine
 
+### create your own api keys
+* go to /infrastructure/apiKeys
+* add your keys as much as you need it
+
 ## Deploying
 ### Deploying dev
 
@@ -38,4 +42,6 @@ You will need the following things properly installed on your computer.
 * `npm run db:plan:prod` verify changes in prod infrastructure (optional)
 * `npm run db:apply:prod` apply changes to prod infrastructure (optional)
 * `npm run api:deploy:prod` deploy claudiajs api with prod environment
+
+
 
