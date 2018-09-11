@@ -14,11 +14,12 @@
     "db:plan:prod": "cd infrastructure && terraform workspace select prod && terraform plan -var-file='../api/claudia.json'",
     "db:apply": "cd infrastructure && terraform workspace select dev && terraform apply -var-file='../api/claudia.json'",
     "db:apply:prod": "cd infrastructure && terraform workspace select prod && terraform apply -var-file='../api/claudia.json'",
-    "db:destroy": "cd infrastructure && terraform workspace select dev && terraform destroy",
-    "db:destroy:prod": "cd infrastructure && terraform workspace select prod && terraform destroy",
+    "db:destroy": "cd infrastructure && terraform workspace select dev && terraform destroy -var-file='../api/claudia.json'",
+    "db:destroy:prod": "cd infrastructure && terraform workspace select prod && terraform destroy -var-file='../api/claudia.json'",
     "api:create": "claudia create --profile space-center --use-s3-bucket space-center-deploy --config api/claudia.json --region us-east-1 --api-module api/index --timeout 120 --policies policies --version development --env dev",
     "api:deploy": "claudia update --profile space-center --use-s3-bucket space-center-deploy --config api/claudia.json --version development --env dev",
     "api:deploy:prod": "claudia update --profile space-center --use-s3-bucket space-center-deploy --config api/claudia.json --version production --env prod",
+    "api:destroy": "claudia destroy --source api/index --config api/claudia.json --version development --env dev",
     "prepush": "npm run lint"
   },
   "repository": {

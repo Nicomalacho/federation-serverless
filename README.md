@@ -20,15 +20,15 @@ You will need the following things properly installed on your computer.
 * `npm run api:create` creates and deploy claudiajs api with dev environment
 * if you are doing a fresh setup please configure [remote proxy](https://github.com/graphcool/chromeless/tree/master/serverless) and then update Chromeless Service Information in [settings.js](api/repositories/settings.js)
 
-### Running on local machine
+## Running on local machine
 * `npm server` start claudia js in local machine
 
-## Testing
+### Testing
 * `npm test` run tests with jasmine
 
-### create your own api keys
+## Create your own api keys
 * go to /infrastructure/apiKeys
-* add your keys as much as you need it
+* add your keys as many as you need
 
 ## Deploying
 ### Deploying dev
