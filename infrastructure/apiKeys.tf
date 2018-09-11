@@ -4,7 +4,7 @@
 
 # default api key
 resource "aws_api_gateway_api_key" "default-key" {
-  name = "platiti-key-${terraform.env}"
+  name = "default-key-${terraform.env}"
 }
 # assign the default key to federation server usage plan
 resource "aws_api_gateway_usage_plan_key" "federation-server-usage-key" {
