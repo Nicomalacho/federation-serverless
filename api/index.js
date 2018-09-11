@@ -31,7 +31,6 @@ api.get('/federation', (request) => {
 api.post('/accounts', (request) => {
   const { environment } = request.env;
   const { body } = request;
-
   return accountRepo.create(body, environment)
     .catch(() => {
       throw notCreated;
