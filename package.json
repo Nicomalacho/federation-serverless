@@ -24,14 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/space-center/federation-server.git"
+    "url": "https://gitlab.com/space-center/federation-serverless.git"
   },
   "author": "Nicolas Gaviria Mejia",
   "license": "",
   "bugs": {
-    "url": "https://gitlab.com/space-center/federation-server/issues"
+    "url": "https://gitlab.com/space-center/federation-serverless.git/issues"
   },
-  "homepage": "https://gitlab.com/space-center/federation-server#README",
+  "homepage": "https://gitlab.com/space-center/federation-serverless.git#README",
   "devDependencies": {
     "claudia": "^5.1.1",
     "claudia-local-api": "^2.0.0",
