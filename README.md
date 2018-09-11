@@ -13,7 +13,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation / Initial setup
 
-* `git clone git@gitlab.com:space-center/federation-server.git`
+* `git clone git@gitlab.com:space-center/federation-serverless.git`
 * change into the new directory
 * `npm run db:setup:workspaces` create terraform workspaces
 * `npm run db:apply` creates or updates dev infrastructure
