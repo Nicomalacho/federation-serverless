@@ -26,6 +26,19 @@ resource "aws_dynamodb_table" "federation-server" {
     type = "S"
   }
 
+  attribute {
+    name = "account_id"
+    type = "S"
+  }
+
+  global_secondary_index {
+    name               = "account_id_index"
+    hash_key           = "account_id"
+    write_capacity     = 10
+    read_capacity      = 10
+    projection_type    = "ALL"
+  }
+
   tags {
     Name        = "federation"
     Service     = "space-center"

@@ -1,48 +1,68 @@
 const AWS = require('aws-sdk');
-const Promise = require('bluebird');
 const moment = require('moment');
 const settings = require('./settings');
 const { parseAccount } = require('../utils');
 
-module.exports.find = (account, environment) => {
-  const keys = parseAccount(account);
-  const tableName = getTableName(environment);
-  const params = {
-    TableName: tableName,
-    Key: keys,
-  };
+const NAME = 'name';
 
-  const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1', convertEmptyValues: true });
-  return docClient.get(params).promise();
+module.exports.find = (account, type, environment) => {
+  const tableName = getTableName(environment);
+  const keys = parseAccount(account);
+  switch (type) {
+    case NAME:
+      return getItemById(keys, tableName);
+    default: // When type = id
+      return getItemByIndex(account, tableName);
+  }
 };
 
 module.exports.create = (body, environment) => {
   const tableName = getTableName(environment);
-  const { domain, identification, accountId } = body;
+  const {
+    // eslint-disable-next-line camelcase
+    domain, identification, account_id, memo, memo_type,
+  } = body;
+
   const params = {
     TableName: tableName,
     Item: {
       domain,
       identification,
-      accountId,
-      createdAt: moment().unix(),
+      stellar_address: `${identification}*${domain}`,
+      account_id,
+      memo,
+      memo_type,
+      created_at: moment().unix(),
     },
+    ReturnValues: 'ALL_OLD',
   };
-
-  return Promise.promisify(createItem)(params);
+  return createItem(params);
 };
 
-function createItem(params, callback) {
+function getItemByIndex(index, tableName) {
+  const params = {
+    TableName: tableName,
+    IndexName: 'account_id_index',
+    KeyConditionExpression: 'account_id = :account_id',
+    ExpressionAttributeValues: { ':account_id': `${index}` },
+  };
   const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1', convertEmptyValues: true });
-  docClient.put(params, (err) => {
-    if (err) {
-      callback('we could not create your account, please try again later');
-    } else {
-      callback(null, { account: params.Item });
-    }
-  });
+  return docClient.query(params).promise();
 }
 
+function getItemById(keys, tableName) {
+  const params = {
+    TableName: tableName,
+    Key: keys,
+  };
+  const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1', convertEmptyValues: true });
+  return docClient.get(params).promise();
+}
+
+function createItem(params) {
+  const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1', convertEmptyValues: true });
+  return docClient.put(params).promise();
+}
 
 function getTableName(environment) {
   return settings(environment).federationTableName;

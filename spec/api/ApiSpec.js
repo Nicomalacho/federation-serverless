@@ -43,9 +43,10 @@ describe('when query an account', () => {
     };
   });
 
-  it('should return a valid account', (done) => {
+  it('should return a valid account with type', (done) => {
     const queryParameters = {
-      q: '3155954774*ariari.co',
+      q: '3155964774*ariari.co',
+      type: 'name',
     };
     api.proxyRouter(_.merge(defaultParams, {
       queryStringParameters: queryParameters,
@@ -62,6 +63,7 @@ describe('when query an account', () => {
   it('should not found an account', (done) => {
     const queryParameters = {
       q: '3103124321*nico.co',
+      type: 'name',
     };
     api.proxyRouter(_.merge(defaultParams, {
       queryStringParameters: queryParameters,

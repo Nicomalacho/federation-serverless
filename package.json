@@ -1,5 +1,5 @@
 {
-  "name": "federation-server",
+  "name": "federation-serverless",
   "version": "1.0.0",
   "description": "Js implementation of Federation protocol server.",
   "main": "index.js",

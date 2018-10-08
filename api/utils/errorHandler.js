@@ -1,19 +1,53 @@
-const notFound = {
-  error: {
-    code: 'federation.account.notFound',
-    message: 'Account not found',
-  },
-};
-const notCreated = {
-  error: {
-    code: 'federation.account.notCreated',
-    message: 'We cannot create that account',
-  },
+
+class NotFound extends Error {
+  constructor(msg) {
+    super(msg);
+    this.name = 'NotFoundError';
+    this.code = 'federation.account.notFound';
+    this.detail = msg;
+  }
+
+  toJson() {
+    return {
+      detail: this.detail,
+      code: this.code,
+    };
+  }
+}
+
+class NotSaved extends Error {
+  constructor(msg) {
+    super(msg);
+    this.name = 'NotSavedError';
+    this.code = 'federation.account.notSaved';
+    this.detail = msg;
+  }
+
+  toJson() {
+    return {
+      detail: this.detail,
+      code: this.code,
+    };
+  }
+}
+
+const internalError = {
+  detail: 'Internal error occurred',
+  code: 'federation.internalError',
 };
 
+function validationError(err) {
+  return {
+    detail: err.name,
+    code: err.errors,
+  };
+}
+
 const errors = {
-  notFound,
-  notCreated,
+  NotFound,
+  NotSaved,
+  internalError,
+  validationError,
 };
 
 module.exports = errors;
