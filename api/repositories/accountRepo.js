@@ -61,7 +61,7 @@ function getItemById(keys, tableName) {
 
 function createItem(params) {
   const docClient = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1', convertEmptyValues: true });
-  return docClient.put(params).promise().then((()=>{return params}));
+  return docClient.put(params).promise().then((() => params));
 }
 
 function getTableName(environment) {
