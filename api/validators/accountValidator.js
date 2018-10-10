@@ -10,12 +10,13 @@ const object = yup.object({
   domain: yup.string().matches(regexDomain).required(),
   identification: yup.string().required(),
   account_id: yup.string().required(),
-  memo_type: yup.string().required(),
+  memo_type: yup.string(),
 });
 
 module.exports.validate = function validate(data) {
   const schema = addKey(data.memo_type ? data.memo_type : '');
-  return schema.validate(data, { strict: true });
+  const schm = data.memo ? schema.shape({ memo_type: yup.string().required() }) : object;
+  return schm.validate(data, { strict: true });
 };
 
 function addKey(key) {

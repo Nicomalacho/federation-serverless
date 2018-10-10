@@ -19,10 +19,9 @@ module.exports.find = (account, type, environment) => {
 module.exports.create = (body, environment) => {
   const tableName = getTableName(environment);
   const {
-    // eslint-disable-next-line camelcase
+    /* eslint-disable-next-line camelcase */
     domain, identification, account_id, memo, memo_type,
   } = body;
-
   const params = {
     TableName: tableName,
     Item: {
@@ -36,6 +35,12 @@ module.exports.create = (body, environment) => {
     },
     ReturnValues: 'ALL_OLD',
   };
+
+  /* eslint-disable-next-line camelcase */
+  if (memo_type && !memo) {
+    delete params.Item.memo_type;
+  }
+
   return createItem(params);
 };
 

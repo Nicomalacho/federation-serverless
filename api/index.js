@@ -47,8 +47,8 @@ api.post('/accounts', async (request) => {
   }
 
   return accountRepo.create(body, environment)
-    .then(data => parseResponse(data)).catch(() => {
-      throw new ApiBuilder.ApiResponse(internalError, { 'Content-Type': 'application/json' }, 500);
+    .then(data => parseResponse(data)).catch((err) => {
+      throw new ApiBuilder.ApiResponse(err, { 'Content-Type': 'application/json' }, 500);
     });
 }, {
   apiKeyRequired: true,
