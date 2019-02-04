@@ -31,9 +31,9 @@ class NotSaved extends Error {
   }
 }
 class DefaultAccountNotFound extends NotFound {
-  constructor(msg){
+  constructor(msg) {
     super(msg);
-    this.code = 'federation.defaultDepositAccount.notFound';    
+    this.code = 'federation.defaultDepositAccount.notFound';
   }
 }
 

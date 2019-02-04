@@ -29,9 +29,8 @@ module.exports.resolveDefaultDepositAccount = async (domain) => {
   try {
     const tomlInfo = await StellarSdk.StellarTomlResolver.resolve(domain);
     const defaultDepositAccount = tomlInfo.FEDERATION_DEFAULT_DEPOSIT_ACCOUNT;
-    return defaultDepositAccount; 
-  } catch (e){
+    return defaultDepositAccount;
+  } catch (e) {
     return false;
-  } 
-}
-
+  }
+};
