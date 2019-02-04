@@ -1,3 +1,4 @@
+const StellarSdk = require('stellar-sdk');
 const _ = require('lodash');
 
 module.exports.parseAccount = (account) => {
@@ -23,3 +24,14 @@ module.exports.parseResponse = (data) => {
     memo: obj.memo,
   };
 };
+
+module.exports.resolveDefaultDepositAccount = async (domain) => {
+  try {
+    const tomlInfo = await StellarSdk.StellarTomlResolver.resolve(domain);
+    const defaultDepositAccount = tomlInfo.FEDERATION_DEFAULT_DEPOSIT_ACCOUNT;
+    return defaultDepositAccount; 
+  } catch (e){
+    return false;
+  } 
+}
+

@@ -30,6 +30,12 @@ class NotSaved extends Error {
     };
   }
 }
+class DefaultAccountNotFound extends NotFound {
+  constructor(msg){
+    super(msg);
+    this.code = 'federation.defaultDepositAccount.notFound';    
+  }
+}
 
 const internalError = {
   detail: 'Internal error occurred',
@@ -46,6 +52,7 @@ function validationError(err) {
 const errors = {
   NotFound,
   NotSaved,
+  DefaultAccountNotFound,
   internalError,
   validationError,
 };
