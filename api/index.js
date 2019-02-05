@@ -2,7 +2,7 @@ const ApiBuilder = require('claudia-api-builder');
 const { accountRepo } = require('./repositories');
 const accountValidator = require('./validators/accountValidator');
 const {
-  NotFound, validationError, internalError, DefaultAccountNotFound,
+  NotFound, validationError, internalError,
 } = require('./utils/errorHandler');
 const {
   parseResponse, resolveDefaultDepositAccount, parseAccount,
@@ -29,9 +29,9 @@ api.get('/federation', async (request) => {
     }
     const defaultDepositAccount = await resolveDefaultDepositAccount(keys.domain);
     if (defaultDepositAccount) {
-      return { defaultDepositAccount };
+      return { default_deposit_account: defaultDepositAccount };
     }
-    throw new DefaultAccountNotFound('Default federation deposit account not found');
+    throw new NotFound('Account not found');
   } catch (e) {
     if (e instanceof NotFound) {
       throw new ApiBuilder.ApiResponse(e.toJson(), { 'Content-Type': 'application/json' }, 404);
