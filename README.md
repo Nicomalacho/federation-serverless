@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 
 * `git clone git@gitlab.com:space-center/federation-serverless.git`
 * change into the new directory
-* `npm run api:create` creates and deploy claudiajs api with dev environment
+* `npm run api:create` creates and deploy claudiajs api with dev environment here your federation URL
 * `npm run db:init` init terraform
 * `npm run db:setup:workspaces` create terraform workspaces
 * `npm run db:plan` plan dev infrastructure

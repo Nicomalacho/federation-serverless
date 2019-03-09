@@ -70,3 +70,6 @@ test.js
 # terraform states
 infrastructure/.terraform
 infrastructure/terraform.tfstate.d
+
+# claudia files 
+api/claudia.json
