@@ -66,3 +66,7 @@ typings/
 
 # test files
 test.js
+
+# terraform states
+infrastructure/.terraform
+infrastructure/terraform.tfstate.d

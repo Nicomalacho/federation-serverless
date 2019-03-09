@@ -2,13 +2,13 @@ provider "aws" {
   region = "${var.aws_region}"
   profile = "${var.aws_profile}"
 }
-terraform {
+/* terraform {
   backend "s3" {
-    bucket = "space-center-deploy"
+    bucket = "space-center-deploy-test"
     key    = "federation/terraform.tfstate"
     region = "us-east-1"
   }
-}
+} */
 resource "aws_dynamodb_table" "federation-server" {
   name = "federation-server-${terraform.env}"
   read_capacity  = 1

@@ -15,9 +15,11 @@ You will need the following things properly installed on your computer.
 
 * `git clone git@gitlab.com:space-center/federation-serverless.git`
 * change into the new directory
-* `npm run db:setup:workspaces` create terraform workspaces
-* `npm run db:apply` creates or updates dev infrastructure
 * `npm run api:create` creates and deploy claudiajs api with dev environment
+* `npm run db:init` init terraform
+* `npm run db:setup:workspaces` create terraform workspaces
+* `npm run db:plan` plan dev infrastructure
+* `npm run db:apply` creates or updates dev infrastructure
 * if you are doing a fresh setup please configure [remote proxy](https://github.com/graphcool/chromeless/tree/master/serverless) and then update Chromeless Service Information in [settings.js](api/repositories/settings.js)
 
 ## Running on local machine
@@ -42,6 +44,7 @@ You will need the following things properly installed on your computer.
 * `npm run db:plan:prod` verify changes in prod infrastructure (optional)
 * `npm run db:apply:prod` apply changes to prod infrastructure (optional)
 * `npm run api:deploy:prod` deploy claudiajs api with prod environment
+
 
 
 

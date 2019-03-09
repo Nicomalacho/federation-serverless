@@ -1,11 +1,11 @@
 {
   "lambda": {
-    "role": "federation-server-executor",
-    "name": "federation-server",
+    "role": "federation-serverless-executor",
+    "name": "federation-serverless",
     "region": "us-east-1"
   },
   "api": {
-    "id": "8aqotyz57a",
+    "id": "2uqxjje0ze",
     "module": "api/index"
   }
 }
