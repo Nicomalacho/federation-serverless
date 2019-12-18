@@ -1,0 +1,8 @@
+{
+  "name": "Federation serverless Api",
+  "version": "0.1.0",
+  "description": "Stellar federation protocol on serverless",
+  "title": "Federless",
+  "url" : "https://zitmcefm3b.execute-api.us-east-1.amazonaws.com/development",
+  "sampleUrl" : "https://zitmcefm3b.execute-api.us-east-1.amazonaws.com/development"
+}

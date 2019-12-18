@@ -18,7 +18,7 @@ module.exports.parseResponse = (data) => {
   }
 
   return {
-    stellear_address: obj.stellar_address,
+    stellar_address: obj.stellar_address,
     account_id: obj.account_id,
     memo_type: obj.memo_type,
     memo: obj.memo,

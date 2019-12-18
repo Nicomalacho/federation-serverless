@@ -18,6 +18,25 @@ api.get('/ping', () => ({
   error: { code: 404, contentType: 'application/json; charset=UTF-8' },
 });
 
+/**
+   * @apiVersion 0.1.0
+   * @api {get} /federation Resolve a federated address
+   * @apiName Resolve account
+   * @apiGroup Account
+   *
+   * @apiDescription Resolve account by stellar account or federated address
+   *
+   * @apiParam {String} q it could be a federated address or a stellar account
+   * @apiParam {String=name,id} type if its type should resolve from federated address to stellar address, id is from stellar address to federated
+   *
+   * @apiHeader {String} Content-Type     application/json
+   * @apiHeader {String} x-api-key        api key
+   *
+   * @apiSuccess {String}   stellar_address    Federated address
+   * @apiSuccess {String}   account_id         Stellar account id
+   * @apiSuccess {String}   memo_type          account memo type
+   * @apiSuccess {String}   memo               account memo
+   */
 api.get('/federation', async (request) => {
   const { environment } = request.env;
   const { q, type } = request.queryString;
@@ -41,6 +60,29 @@ api.get('/federation', async (request) => {
 }, {
   success: { contentType: 'application/json' },
 });
+
+/**
+   * @apiVersion 0.1.0
+   * @api {post} /accounts Create a stellar account
+   * @apiName Create account
+   * @apiGroup Account
+   *
+   * @apiDescription Create a federated stellar address
+   *
+   * @apiParam {String} domain Domain of the company used for ...*<domain>
+   * @apiParam {String} identification internal identification of the user in the company used for <identification>*...
+   * @apiParam {String} account_id Stellar account to be resolve against federated address
+   * @apiParam {String=MEMO_ID,MEMO_TEXT} [memo_type] memo type of the stellar account
+   * @apiParam {String} [memo] of the stellar account
+   *
+   * @apiHeader {String} Content-Type     application/json
+   * @apiHeader {String} x-api-key        api key
+   *
+   * @apiSuccess {String}   stellar_address    Federated address
+   * @apiSuccess {String}   account_id         Stellar account id
+   * @apiSuccess {String}   memo_type          account memo type
+   * @apiSuccess {String}   memo               account memo
+   */
 
 api.post('/accounts', async (request) => {
   const { environment } = request.env;

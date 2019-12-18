@@ -45,6 +45,8 @@ You will need the following things properly installed on your computer.
 * `npm run db:apply:prod` apply changes to prod infrastructure (optional)
 * `npm run api:deploy:prod` deploy claudiajs api with prod environment
 
+### Api Documentation 
+* you can find api documentation [here](federless-doc.netlify.com)
 
 
 
