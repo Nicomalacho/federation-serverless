@@ -48,7 +48,7 @@
     "aws-sdk": "^2.307.0",
     "bluebird": "^3.5.2",
     "claudia-api-builder": "^4.1.1",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "moment": "^2.22.2",
     "stellar-sdk": "^0.13.0",
     "yup": "^0.26.5"
