@@ -50,7 +50,7 @@
     "claudia-api-builder": "^4.1.1",
     "lodash": "^4.17.13",
     "moment": "^2.22.2",
-    "stellar-sdk": "^0.13.0",
+    "stellar-sdk": "^8.2.3",
     "yup": "^0.26.5"
   }
 }
